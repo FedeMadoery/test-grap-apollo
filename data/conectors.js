@@ -16,6 +16,7 @@ const UsuarioSchema = Mongoose.Schema({
     isPublished: Boolean,
     nombre: String,
     password: String,
+    edad: Number,
     updatedAt: String
 });
 
@@ -26,7 +27,7 @@ const Usuario = Mongoose.model('usuarios', UsuarioSchema);
 let i = 0;
 for (i=0; i<10; i++) {
     // modify the mock data creation to also create some views:
-    casual.seed(Math.random()*100*i);
+    casual.seed(Math.random()*1000000*i);
     Usuario.create(
         {
             apellido: casual.last_name,
@@ -35,6 +36,7 @@ for (i=0; i<10; i++) {
             id: casual.integer(0, 99999999),
             isPublished: false,
             nombre: casual.first_name,
+            edad: casual.integer(18,120),
             password: casual.password,
             updatedAt: casual.date('DD-MM-YYYY')
             , function (err, small) {
@@ -45,6 +47,12 @@ for (i=0; i<10; i++) {
         }
         });
 }
+
+
+
+
+
+
 
 // at the bottom, add View to the exports
 export { Usuario };

@@ -9,6 +9,7 @@ type Usuario @model {
   createdAt: Date!
   email: String @isUnique
   id: ID! @isUnique
+  edad: Int
   isPublished: Boolean! @defaultValue(value: false)
   nombre: String!
   password: String!
@@ -17,6 +18,7 @@ type Usuario @model {
 type Query {
     allUsers: [Usuario]
     findUser(email: String!): Usuario
+    updateUser(id: ID, edad: Int): Usuario
 }
 `;
 

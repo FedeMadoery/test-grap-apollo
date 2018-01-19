@@ -13,6 +13,12 @@ const resolvers = {
                     return user;
                 }
             );
+        },
+        updateUser(_, args){
+            return Usuario.findOneAndUpdate({'id' : args.id}, {$set:{edad: args.edad}}, {upsert:true}, function(err, doc){
+                if (err) return console.log(err);
+                return doc
+            });
         }
     }
 };
