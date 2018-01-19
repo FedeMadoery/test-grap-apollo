@@ -7,7 +7,7 @@ const resolvers = {
             );
         },
         findUser(_, args) {
-            return Usuario.findOne({email: args.em}).then(
+            return Usuario.findOne({email: args.email}).then(
                 (user) => {
                     console.log(JSON.stringify(user));
                     return user;
