@@ -16,6 +16,7 @@ type Usuario @model {
 }
 type Query {
     allUsers: [Usuario]
+    findUser(em: String!): Usuario
 }
 `;
 
