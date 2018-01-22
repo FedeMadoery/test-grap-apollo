@@ -15,10 +15,12 @@ const resolvers = {
             );
         },
         updateUser(_, args){
-            return Usuario.findOneAndUpdate({'id' : args.id}, {$set:{edad: args.edad}}, {upsert:true}, function(err, doc){
-                if (err) return console.log(err);
-                return doc
-            });
+            return Usuario.findOneAndUpdate({'id' : args.id}, {$set:{edad: args.edad}}, {upsert:true}).exec()
+                .then(user => {
+                    console.log(user)
+                    // you could modify the object being handed to GraphQL here
+                    return user // IF you use a then, make sure you return the value!!
+                });
         }
     }
 };
